@@ -1,2 +1,22 @@
-# js-applitools-start-kit
-Applitools start kit
+# js-applitools-starter-kit
+> Applitools starter kit
+
+[![Build Status](https://travis-ci.com/jerseysu/js-applitools-start-kit.svg?branch=master)](https://travis-ci.com/jerseysu/js-applitools-start-kit.svg?branch=master)
+
+### Install Env
+```sh
+# Install Env
+$ npm install --save
+```
+* Note: wdio version fixed to 5.18.7
+
+### Run first visual test
+
+```sh
+# Export Applitools key
+$ export APPLITOOLS_API_KEY=
+# Execute test
+$ npm run test:visual -- --spec test/specs/visual.js
+```
+
+* Note: To obtain your key see [How to obtain your API key.](https://applitools.com/docs/topics/overview/obtain-api-key.html)
