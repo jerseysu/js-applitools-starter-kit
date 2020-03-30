@@ -1,24 +1,45 @@
 {
-  "name": "applitool-starter-kit",
-  "version": "1.0.1",
-  "description": "",
+  "name": "js-applitools-start-kit",
+  "version": "1.0.0",
+  "description": "js-applitools-start-kit",
   "main": "index.js",
   "directories": {
     "test": "test"
   },
+  "dependencies": {},
+  "devDependencies": {
+    "@applitools/eyes-selenium": "^4.33.30",
+    "@applitools/eyes-webdriverio": "^5.9.22",
+    "@wdio/cli": "5.18.7",
+    "@wdio/local-runner": "5.18.7",
+    "@wdio/mocha-framework": "5.18.7",
+    "@wdio/spec-reporter": "5.18.7",
+    "@wdio/sync": "5.18.7",
+    "chromedriver": "^80.0.1",
+    "eslint": "^6.8.0",
+    "eslint-config-google": "^0.14.0",
+    "pre-commit": "^1.2.2",
+    "wdio-chromedriver-service": "^5.0.2"
+  },
   "scripts": {
     "lint": "eslint --ext .js .",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "mocha",
+    "test:visual": "wdio test/wdio.conf.js"
   },
   "pre-commit": [
     "lint"
   ],
-  "keywords": [],
-  "author": "",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jerseysu/js-applitools-start-kit.git"
+  },
+  "keywords": [
+    "applitools"
+  ],
+  "author": "jerseysu",
   "license": "ISC",
-  "devDependencies": {
-    "eslint": "^6.8.0",
-    "eslint-config-google": "^0.14.0",
-    "pre-commit": "^1.2.2"
-  }
+  "bugs": {
+    "url": "https://github.com/jerseysu/js-applitools-start-kit/issues"
+  },
+  "homepage": "https://github.com/jerseysu/js-applitools-start-kit#readme"
 }
