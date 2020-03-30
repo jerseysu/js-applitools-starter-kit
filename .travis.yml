@@ -4,9 +4,11 @@ node_js:
 cache:
   directories:
     - "node_modules"
+
 install:
     - npm install
-steps:
-    - npm run test:visual
+
 script:
    - export APPLITOOLS_BATCH_ID=`echo ${TRAVIS_PULL_REQUEST_SHA:=$TRAVIS_COMMIT}`
+   - npm run test:visual
+
