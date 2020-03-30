@@ -7,4 +7,6 @@ cache:
 install:
     - npm install
 steps:
-    - npm run test
+    - npm run test:visual
+script:
+   - export APPLITOOLS_BATCH_ID=`echo ${TRAVIS_PULL_REQUEST_SHA:=$TRAVIS_COMMIT}`
