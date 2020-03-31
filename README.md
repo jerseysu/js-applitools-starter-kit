@@ -5,7 +5,9 @@
 
 ### Install Env
 ```sh
-# Install Env
+# Docker Image
+$ docker pull selenium/standalone-chrome
+# Install npm package
 $ npm install --save
 ```
 * Note: wdio version fixed to 5.18.7
