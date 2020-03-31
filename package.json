@@ -1,6 +1,6 @@
 {
   "name": "js-applitools-start-kit",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "description": "js-applitools-start-kit",
   "main": "index.js",
   "directories": {
@@ -19,7 +19,8 @@
     "eslint": "^6.8.0",
     "eslint-config-google": "^0.14.0",
     "pre-commit": "^1.2.2",
-    "wdio-chromedriver-service": "^5.0.2"
+    "wdio-chromedriver-service": "^5.0.2",
+    "wdio-docker-service": "^2.3.1"
   },
   "scripts": {
     "lint": "eslint --ext .js .",
