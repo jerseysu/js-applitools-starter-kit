@@ -1,7 +1,7 @@
 # js-applitools-starter-kit
 > Applitools starter kit
 
-[![Build Status](https://travis-ci.com/jerseysu/js-applitools-start-kit.svg?branch=master)](https://travis-ci.com/jerseysu/js-applitools-start-kit.svg?branch=master)
+[![Build Status](https://travis-ci.com/jerseysu/js-applitools-starter-kit.svg?branch=master)](https://travis-ci.com/jerseysu/js-applitools-starter-kit.svg?branch=master)
 
 ### Install Env
 ```sh
