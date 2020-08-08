@@ -1,7 +1,7 @@
 # js-applitools-starter-kit
 > Applitools starter kit
 
-[![Build Status](https://travis-ci.com/jerseysu/js-applitools-starter-kit.svg?branch=master)](https://travis-ci.com/jerseysu/js-applitools-starter-kit.svg?branch=master)
+[![Build Status](https://travis-ci.com/jerseysu/js-applitools-starter-kit.svg?branch=master)](https://travis-ci.com/jerseysu/js-applitools-starter-kit)
 
 ### Install Env
 ```sh
@@ -10,7 +10,7 @@ $ docker pull selenium/standalone-chrome
 # Install npm package
 $ npm install --save
 ```
-* Note: wdio version fixed to 5.18.7
+* Note: wdio version: 6.4.0
 
 ### Run first visual test
 
