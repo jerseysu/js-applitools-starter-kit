@@ -1,5 +1,5 @@
 language: node_js
-dist: trusty
+dist: xenial
 
 addons:
   chrome: stable
@@ -20,8 +20,11 @@ install:
 node_js:
   - "stable"
 
-sudo: required
-
 script:
    - export APPLITOOLS_BATCH_ID=`echo ${TRAVIS_PULL_REQUEST_SHA:=$TRAVIS_COMMIT}`
    - npm run test:visual
+
+services:
+  - xvfb
+
+sudo: required
