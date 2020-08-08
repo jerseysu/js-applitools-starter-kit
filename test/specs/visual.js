@@ -4,7 +4,11 @@ const chromedriver = require('chromedriver');
 const {remote} = require('webdriverio');
 const {
   ClassicRunner,
+  ConsoleLogHandler,
+  // DeviceName,
   Eyes,
+  FileLogHandler,
+  // ScreenOrientation,
   Target,
 } = require('@applitools/eyes-webdriverio');
 const {Configuration} = require('@applitools/eyes-selenium');
@@ -26,13 +30,17 @@ describe('wdio6', function() {
     };
 
     const configuration = await new Configuration()
+        // .addDeviceEmulation(DeviceName.iPhone_X, ScreenOrientation.PORTRAIT)
         .setApiKey(process.env.APPLITOOLS_API_KEY)
         .setAppName('Demo App')
-        .setTestName(`Smoke Test #${buildNumber}`);
+        .setTestName(`Smoke Test #${buildNumber}`)
+        .setViewportSize({width: 1024, height: 768});
 
     const runner = await new ClassicRunner();
     eyes = await new Eyes(runner);
     await eyes.setConfiguration(configuration);
+    await eyes.setLogHandler(new ConsoleLogHandler(true));
+    await eyes.setLogHandler(new FileLogHandler(true, 'test/logs/eyes.log', false));
 
     browser = await remote(chrome);
   });
@@ -50,13 +58,13 @@ describe('wdio6', function() {
     await chromedriver.stop();
   });
 
-  it('Classic Runner Test', async () => {
+  it('Test - Basic Check', async () => {
     await eyes.open(browser);
 
     await browser.url('https://demo.applitools.com');
 
     // To see visual bugs after the first run, use the commented line below instead.
-    // await driver.url("https://demo.applitools.com/index_v2.html");
+    // await driver.url('https://demo.applitools.com/index_v2.html');
 
     // Visual checkpoint #1.
     await eyes.check('Login Window', Target.window().fully());
@@ -68,6 +76,16 @@ describe('wdio6', function() {
 
     // Visual checkpoint #2.
     await eyes.check('App Window', Target.window().fully());
+
+    await eyes.closeAsync();
+  });
+
+  it('Test - Baidu', async () => {
+    await eyes.open(browser);
+    await browser.url('https://www.baidu.com');
+
+    // Visual checkpoint #1.
+    await eyes.check('Baidu', Target.window().fully());
 
     await eyes.closeAsync();
   });
