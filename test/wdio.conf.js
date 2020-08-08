@@ -58,7 +58,7 @@ exports.config = {
     //
     'browserName': 'chrome',
     'goog:chromeOptions': {
-      args: process.env.CI ? ['headless', 'disable-gpu'] : [],
+      args: process.env.CI ? ['--headless', '--no-sandbox', '--disable-gpu', '--disable-dev-shm-usage', '--window-size=1920,1080'] : [],
     },
     // If outputDir is provided WebdriverIO can capture driver session logs
     // it is possible to configure which logTypes to include/exclude.

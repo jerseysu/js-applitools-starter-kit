@@ -1,3 +1,5 @@
+os: linux
+dist: xenial
 language: node_js
 
 node_js:
@@ -10,13 +12,14 @@ cache:
     - node_modules
 
 addons:
-  chrome: stable
+    chrome: stable
+
+services:
+  - docker
 
 before_install:
   # starting a GUI to run tests, per https://docs.travis-ci.com/user/gui-and-headless-browsers/#Using-xvfb-to-Run-Tests-That-Require-a-GUI
-  - "export DISPLAY=:99.0"
-  - "sh -e /etc/init.d/xvfb start"
-  - "npm config set spin false"
+  - docker pull selenium/standalone-chrome
 
 before_script:
   - "npm install"
