@@ -114,10 +114,7 @@ exports.config = {
   // your test setup with almost no effort. Unlike plugins, they don't add new
   // commands. Instead, they hook themselves up into the test process.
   services: [
-    ['chromedriver', {
-      outputDir: 'driver-logs', // overwrites the config.outputDir
-      args: ['--silent'], //
-    }],
+    ['selenium-standalone'],
   ],
   // services: ['docker'],
   // dockerLogs: './',
