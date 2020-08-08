@@ -12,7 +12,7 @@ const {Configuration} = require('@applitools/eyes-selenium');
 let browser;
 let eyes;
 
-describe('wdio6', function() {
+describe('wdio5', function() {
   before(async function() {
     chromedriver.start();
   });
@@ -23,18 +23,6 @@ describe('wdio6', function() {
         browserName: 'chrome',
       },
     };
-
-    const runner = new ClassicRunner();
-
-    eyes = new Eyes(runner);
-    eyes.setApiKey(process.env.APPLITOOLS_API_KEY);
-
-    const configuration = new Configuration();
-    configuration.setAppName('Demo App');
-    configuration.setTestName('Smoke Test');
-
-    eyes.setConfiguration(configuration);
-
     browser = await remote(chrome);
   });
 
@@ -52,8 +40,18 @@ describe('wdio6', function() {
   });
 
   it('Classic Runner Test', async () => {
-    // await browser.url('https://demo.applitools.com');
+    await browser.url('https://demo.applitools.com');
 
+    const runner = new ClassicRunner();
+
+    eyes = new Eyes(runner);
+    eyes.setApiKey(process.env.APPLITOOLS_API_KEY);
+
+    const configuration = new Configuration();
+    configuration.setAppName('Demo App');
+    configuration.setTestName('Smoke Test');
+
+    eyes.setConfiguration(configuration);
     await eyes.open(browser);
 
     await browser.url('https://demo.applitools.com');
