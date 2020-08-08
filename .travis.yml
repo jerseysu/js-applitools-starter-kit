@@ -20,9 +20,9 @@ before_install:
   - docker pull selenium/standalone-chrome
   - docker run -d -p 4444:4444 -v /dev/shm:/dev/shm selenium/standalone-chrome
 
-before_script:
-  - "npm install"
+install:
+  - npm install
 
 script:
    - export APPLITOOLS_BATCH_ID=`echo ${TRAVIS_PULL_REQUEST_SHA:=$TRAVIS_COMMIT}`
-   - npm run test:visual
+   - npm run test:visual -- --spec test/specs/visual.js
