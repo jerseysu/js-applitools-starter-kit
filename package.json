@@ -25,7 +25,8 @@
   "scripts": {
     "lint": "eslint --ext .js .",
     "test": "mocha",
-    "test:visual": "wdio test/wdio.conf.js"
+    "test:visual": "wdio test/wdio.conf.js",
+    "test:visual:cloud": "wdio test/wdio.cloud.conf.js"
   },
   "pre-commit": [
     "lint"
