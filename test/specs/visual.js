@@ -9,12 +9,14 @@ const {
 } = require('@applitools/eyes-webdriverio');
 const {Configuration} = require('@applitools/eyes-selenium');
 
+const buildNumber = process.env.TRAVIS_JOB_NUMBER || 'local';
+
 let browser;
 let eyes;
 
-describe('wdio5', function() {
-  before(async function() {
-    chromedriver.start();
+describe('wdio6', function() {
+  before(async () => {
+    await chromedriver.start();
   });
 
   beforeEach(async () => {
@@ -23,6 +25,15 @@ describe('wdio5', function() {
         browserName: 'chrome',
       },
     };
+
+    const configuration = await new Configuration();
+    const runner = await new ClassicRunner();
+    eyes = await new Eyes(runner);
+    await eyes.setApiKey(process.env.APPLITOOLS_API_KEY);
+    await configuration.setAppName('Demo App');
+    await configuration.setTestName(`Smoke Test #${buildNumber}`);
+    await eyes.setConfiguration(configuration);
+
     browser = await remote(chrome);
   });
 
@@ -35,23 +46,11 @@ describe('wdio5', function() {
     console.log(results.getAllResults());
   });
 
-  after(async function() {
-    chromedriver.stop();
+  after(async () => {
+    await chromedriver.stop();
   });
 
   it('Classic Runner Test', async () => {
-    await browser.url('https://demo.applitools.com');
-
-    const runner = new ClassicRunner();
-
-    eyes = new Eyes(runner);
-    eyes.setApiKey(process.env.APPLITOOLS_API_KEY);
-
-    const configuration = new Configuration();
-    configuration.setAppName('Demo App');
-    configuration.setTestName('Smoke Test');
-
-    eyes.setConfiguration(configuration);
     await eyes.open(browser);
 
     await browser.url('https://demo.applitools.com');
