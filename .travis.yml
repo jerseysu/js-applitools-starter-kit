@@ -1,14 +1,8 @@
 language: node_js
-dist: xenial
 
-addons:
-  chrome: stable
-
-before_install:
-  # starting a GUI to run tests, per https://docs.travis-ci.com/user/gui-and-headless-browsers/#Using-xvfb-to-Run-Tests-That-Require-a-GUI
-  - "export DISPLAY=:99.0"
-  - "sh -e /etc/init.d/xvfb start"
-  - "npm config set spin false"
+apt:
+  packages:
+    - google-chrome-stable
 
 cache:
   directories:
@@ -23,8 +17,3 @@ node_js:
 script:
    - export APPLITOOLS_BATCH_ID=`echo ${TRAVIS_PULL_REQUEST_SHA:=$TRAVIS_COMMIT}`
    - npm run test:visual
-
-services:
-  - xvfb
-
-sudo: required
