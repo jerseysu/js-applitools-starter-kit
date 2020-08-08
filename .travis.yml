@@ -1,5 +1,4 @@
 os: linux
-dist: xenial
 language: node_js
 
 node_js:
@@ -18,8 +17,8 @@ services:
   - docker
 
 before_install:
-  # starting a GUI to run tests, per https://docs.travis-ci.com/user/gui-and-headless-browsers/#Using-xvfb-to-Run-Tests-That-Require-a-GUI
   - docker pull selenium/standalone-chrome
+  - docker run -d -p 4444:4444 -v /dev/shm:/dev/shm selenium/standalone-chrome
 
 before_script:
   - "npm install"
