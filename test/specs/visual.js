@@ -11,8 +11,7 @@ const {Configuration} = require('@applitools/eyes-selenium');
 
 const buildNumber = process.env.TRAVIS_JOB_NUMBER || 'local';
 
-let browser;
-let eyes;
+let browser; let eyes;
 
 describe('wdio6', function() {
   before(async () => {
@@ -26,12 +25,13 @@ describe('wdio6', function() {
       },
     };
 
-    const configuration = await new Configuration();
+    const configuration = await new Configuration()
+        .setApiKey(process.env.APPLITOOLS_API_KEY)
+        .setAppName('Demo App')
+        .setTestName(`Smoke Test #${buildNumber}`);
+
     const runner = await new ClassicRunner();
     eyes = await new Eyes(runner);
-    await eyes.setApiKey(process.env.APPLITOOLS_API_KEY);
-    await configuration.setAppName('Demo App');
-    await configuration.setTestName(`Smoke Test #${buildNumber}`);
     await eyes.setConfiguration(configuration);
 
     browser = await remote(chrome);
@@ -55,8 +55,11 @@ describe('wdio6', function() {
 
     await browser.url('https://demo.applitools.com');
 
+    // To see visual bugs after the first run, use the commented line below instead.
+    // await driver.url("https://demo.applitools.com/index_v2.html");
+
     // Visual checkpoint #1.
-    await eyes.check('Login Window', Target.window());
+    await eyes.check('Login Window', Target.window().fully());
 
     // Click the "Log in" button.
     // await driver.click(By.id('log-in'));
@@ -64,7 +67,7 @@ describe('wdio6', function() {
     await loginButton.click();
 
     // Visual checkpoint #2.
-    await eyes.check('App Window', Target.window());
+    await eyes.check('App Window', Target.window().fully());
 
     await eyes.closeAsync();
   });
