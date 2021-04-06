@@ -6,14 +6,16 @@
 ### Install Env
 ```sh
 # Docker Image
-$ docker pull selenium/standalone-chrome
+$ docker pull selenium/standalone-chrome:3.141.59-20200826
 # Install npm package
 $ npm install --save
 
 # Run Docker Image in another terminal
-$ docker run -d -p 4444:4444 -v /dev/shm:/dev/shm selenium/standalone-chrome
+$ docker run -d -p 4444:4444 -v /dev/shm:/dev/shm selenium/standalone-chrome:3.141.59-20200826
 ```
-* Note: wdio version : 7.3.0
+#### Note:
+- wdio version : 7.3.0
+- Selenium Version: 3.141.59-20200826
 
 ### Run first visual test
 ```sh
