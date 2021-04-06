@@ -9,11 +9,13 @@
 $ docker pull selenium/standalone-chrome
 # Install npm package
 $ npm install --save
+
+# Run Docker Image in another terminal
+$ docker run -d -p 4444:4444 -v /dev/shm:/dev/shm selenium/standalone-chrome
 ```
-* Note: wdio version : 6.4.0
+* Note: wdio version : 7.3.0
 
 ### Run first visual test
-
 ```sh
 # Export Applitools key
 $ export APPLITOOLS_API_KEY=
