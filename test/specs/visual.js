@@ -14,7 +14,7 @@ const buildNumber = process.env.TRAVIS_JOB_NUMBER || 'local';
 let browser;
 let eyes;
 
-describe('wdio6', function() {
+describe('wdio7', function() {
   before(async () => {
     await chromedriver.start();
   });
