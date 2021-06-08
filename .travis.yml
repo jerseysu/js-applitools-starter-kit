@@ -2,7 +2,7 @@ os: linux
 language: node_js
 
 node_js:
-  - 'stable'
+  - 14
 
 sudo: required
 
@@ -17,11 +17,11 @@ services:
   - docker
 
 before_install:
-  - docker pull selenium/standalone-chrome
-  - docker run -d -p 4444:4444 -v /dev/shm:/dev/shm selenium/standalone-chrome
+  - docker pull selenium/standalone-chrome:3.141.59-20200826
+  - docker run -d -p 4444:4444 -v /dev/shm:/dev/shm selenium/standalone-chrome:3.141.59-20200826
 
 install:
-  - npm install
+  - npm install --save-dev
 
 script:
    - export APPLITOOLS_BATCH_ID=`echo ${TRAVIS_PULL_REQUEST_SHA:=$TRAVIS_COMMIT}`
